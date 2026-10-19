@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TECHNOVA | Future Technology</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050816;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+:root {
+    --blue: #00d9ff;
+    --purple: #7b2cff;
+    --dark: #050816;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,217,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,217,255,.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: rgba(5,8,22,.85);
+    border-bottom: 1px solid rgba(0,217,255,.2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--blue);
+    text-shadow: 0 0 15px var(--blue);
+}
+
+nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+nav a {
+    color: #d4e5ff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--blue);
+}
+
+.hero {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    padding: 70px 8%;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.tag {
+    color: var(--blue);
+    letter-spacing: 4px;
+    font-size: 12px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 1.1;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--blue);
+    text-shadow: 0 0 25px rgba(0,217,255,.6);
+}
+
+.hero p {
+    color: #aab9d3;
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 25px;
+    background: var(--blue);
+    color: #050816;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 0 22px rgba(0,217,255,.3);
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 35px rgba(0,217,255,.7);
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    animation: float 5s ease-in-out infinite;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(0,217,255,.4);
+    box-shadow: 0 0 50px rgba(0,100,255,.2);
+    display: block;
+}
+
+.hero-image::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border: 1px solid rgba(0,217,255,.2);
+    border-radius: 25px;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+section {
+    padding: 80px 8%;
+    scroll-margin-top: 75px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.section-title h2 span {
+    color: var(--blue);
+}
+
+.section-title p {
+    color: #8c9bb8;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: linear-gradient(145deg, #101a35, #080d20);
+    border: 1px solid rgba(0,217,255,.18);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--blue);
+    box-shadow: 0 10px 35px rgba(0,217,255,.12);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 24px;
+}
+
+.card h3 {
+    color: var(--blue);
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #aab9d3;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.about {
+    background: rgba(15,25,50,.55);
+    border-top: 1px solid rgba(0,217,255,.12);
+    border-bottom: 1px solid rgba(0,217,255,.12);
+    text-align: center;
+}
+
+.about p {
+    max-width: 750px;
+    margin: auto;
+    color: #b5c3dc;
+    line-height: 1.9;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.stat h3 {
+    font-size: 32px;
+    color: var(--blue);
+    margin-bottom: 8px;
+}
+
+.stat p {
+    font-size: 13px;
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    color: #aab9d3;
+    margin: 20px 0 30px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #03050e;
+    color: #71809e;
+    border-top: 1px solid rgba(0,217,255,.15);
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--blue);
+}
+
+@media (max-width: 800px) {
+    nav {
+        padding: 18px 5%;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 65px 6%;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        gap: 35px;
+    }
+}
+
+@media (max-width: 420px) {
+    nav {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    nav ul {
+        gap: 18px;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    section {
+        padding: 65px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">TECHNOVA.</div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#technology">Teknologi</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#contact">Kontak</a></li>
+    </ul>
+</nav>
+
+<header class="hero" id="home">
+    <div class="hero-text">
+        <div class="tag">// WELCOME TO THE FUTURE</div>
+        <h1>EXPLORE THE<br><span>FUTURE</span> OF<br>TECHNOLOGY.</h1>
+        <p>
+            Jelajahi dunia teknologi masa depan.
+            Dari kecerdasan buatan hingga dunia digital,
+            inovasi hari ini membentuk kehidupan esok hari.
+        </p>
+        <a href="#technology" class="btn">Jelajahi Sekarang ↗</a>
+    </div>
+
+    <div class="hero-image">
+        <img
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=85"
+            alt="Bumi digital dan jaringan teknologi masa depan">
+    </div>
+</header>
+
+<section id="technology">
+    <div class="section-title">
+        <h2>OUR <span>TECHNOLOGY</span></h2>
+        <p>Inovasi yang mengubah dunia menjadi lebih canggih.</p>
+    </div>
+
+    <div class="cards">
+        <article class="card">
+            <img
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=85"
+                alt="Ilustrasi kecerdasan buatan">
+            <div class="card-content">
+                <h3>01. Artificial Intelligence</h3>
+                <p>
+                    AI membantu manusia mengolah data,
+                    mengenali pola, dan menyelesaikan
+                    berbagai pekerjaan secara cerdas.
+                </p>
+            </div>
+        </article>
+
+        <article class="card">
+            <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=85"
+                alt="Komponen sirkuit elektronik">
+            <div class="card-content">
+                <h3>02. Digital Hardware</h3>
+                <p>
+                    Perangkat keras dan sirkuit elektronik
+                    menjadi fondasi komputer, smartphone,
+                    serta berbagai perangkat modern.
+                </p>
+            </div>
+        </article>
+
+        <article class="card">
+            <img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=85"
+                alt="Jaringan digital global">
+            <div class="card-content">
+                <h3>03. Global Network</h3>
+                <p>
+                    Internet menghubungkan manusia,
+                    informasi, dan perangkat dari berbagai
+                    belahan dunia secara digital.
+                </p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="section-title">
+        <h2>ABOUT <span>TECHNOVA</span></h2>
+    </div>
+
+    <p>
+        TECHNOVA adalah konsep website bertema teknologi
+        futuristik yang menghadirkan desain modern,
+        visual digital, dan inspirasi inovasi.
+        Kami percaya bahwa teknologi bukan hanya tentang
+        perangkat, tetapi juga tentang menciptakan masa depan.
+    </p>
+
+    <div class="stats">
+        <div class="stat">
+            <h3>AI</h3>
+            <p>Kecerdasan Buatan</p>
+        </div>
+        <div class="stat">
+            <h3>IoT</h3>
+            <p>Internet of Things</p>
+        </div>
+        <div class="stat">
+            <h3>∞</h3>
+            <p>Inovasi Tanpa Batas</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="section-title">
+        <h2>THE FUTURE IS <span>NOW</span></h2>
+    </div>
+    <p>Jadilah bagian dari perkembangan teknologi masa depan.</p>
+    <a href="#home" class="btn">Kembali ke Atas ↑</a>
+</section>
+
+<footer>
+    <p>© 2026 <span>TECHNOVA</span> | Future Starts Here.</p>
+</footer>
+
+</body>
+  </html>
